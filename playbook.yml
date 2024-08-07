@@ -1,0 +1,20 @@
+- hosts: all
+  become: yes
+  tasks:
+    - name: Instalar Apache
+      apt:
+        name: apache2
+        state: present
+        update_cache: yes
+
+    - name: Iniciar Apache
+      service:
+        name: apache2
+        state: started
+        enabled: yes
+
+    - name: Copiar archivo HTML
+      copy:
+        src: /c/Users/Harvin\ Rodriguez/Desktop/Trabajo\ final\ electiva\ 2/index.html
+        dest: /var/www/html/index.html
+
